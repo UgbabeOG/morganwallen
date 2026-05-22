@@ -53,4 +53,63 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // Ticket Modal Logic
+  const modal = document.getElementById('ticket-modal');
+  const closeBtn = document.querySelector('.close-modal');
+  const ticketTriggers = document.querySelectorAll('.ticket-trigger');
+  const ticketForm = document.getElementById('ticket-form');
+  const formSuccess = document.getElementById('form-success');
+  const eventNameInput = document.getElementById('event-name');
+  const modalEventDetails = document.getElementById('modal-event-details');
+
+  ticketTriggers.forEach(trigger => {
+    trigger.addEventListener('click', function() {
+      const eventDetails = this.getAttribute('data-event');
+      eventNameInput.value = eventDetails;
+      modalEventDetails.textContent = eventDetails;
+      modal.style.display = 'block';
+      ticketForm.classList.remove('hidden');
+      formSuccess.classList.add('hidden');
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  if (ticketForm) {
+    ticketForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const event = formData.get('event-name');
+      const tickets = formData.get('tickets');
+      const message = formData.get('message');
+
+      // Construct mailto link
+      const subject = encodeURIComponent(`Ticket Inquiry: ${event}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nEvent: ${event}\nTickets: ${tickets}\nMessage: ${message}`);
+      
+      // Open default email client
+      window.location.href = `mailto:tickets@morganwallen.com?subject=${subject}&body=${body}`;
+
+      // Show success message
+      ticketForm.classList.add('hidden');
+      formSuccess.classList.remove('hidden');
+
+      // Close modal after a delay
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 3000);
+    });
+  }
 });
