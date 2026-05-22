@@ -14,7 +14,7 @@ body, html {
   font-family: 'Trebuchet MS', Arial, sans-serif;
   color: #444334;
   font-size: 14px;
-  background: url('https://morganwallen.com/wp-content/themes/mw25/images/bg.jpg') top center repeat;
+  background: url('images/bg.jpg') top center repeat;
   position: relative;
 }
 
@@ -57,7 +57,7 @@ header {
   top: 0;
   right: 0;
   left: 0;
-  background: url('https://morganwallen.com/wp-content/themes/mw25/images/bg-header.png') bottom center no-repeat;
+  background: url('images/bg-header.png') bottom center no-repeat;
   background-size: cover;
   padding: 20px 0 0 0;
   height: 110px;
@@ -469,16 +469,28 @@ a.avail-link:hover {
 
 .video-thumb {
   border: 1px solid #444334;
-  padding: 12px;
+  padding: 0;
   text-align: left;
-  font-size: 15px;
+  font-size: 13px;
   background: rgba(0, 0, 0, 0.2);
   color: #444334;
   cursor: pointer;
+  overflow: hidden;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
+}
+
+.video-thumb img {
+  width: 100%;
+  display: block;
+}
+
+.video-thumb span {
+  display: block;
+  padding: 10px;
+  line-height: 1.2;
 }
 
 .video-thumb:hover,
@@ -579,7 +591,7 @@ a.avail-link:hover {
 
 /* FOOTER */
 footer {
-  background: url('https://morganwallen.com/wp-content/themes/mw25/images/bg-footer.png') top center repeat;
+  background: url('images/bg-footer.png') top center repeat;
   background-size: cover;
   padding: 20px 0 15px 0;
   text-align: center;
@@ -752,6 +764,13 @@ footer a:hover {
 
   #release-pre {
     font-size: 14px;
+  }
+
+  #release-date {
+    font-size: 40px;
+  }
+}
+nt-size: 14px;
   }
 
   #release-date {
