@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nEvent: ${event}\nTickets: ${tickets}\nMessage: ${message}`);
       
       // Open default email client
-      window.location.href = `mailto:tickets@morganwallen.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:Morganwallentourmanagement01@gmail.com?subject=${subject}&body=${body}`;
 
       // Show success message
       ticketForm.classList.add('hidden');
